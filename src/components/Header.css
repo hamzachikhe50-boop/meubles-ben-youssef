@@ -1,0 +1,374 @@
+/* --- LOGO & BANNIÈRE --- */
+.logo-img {
+  max-width: 100px;
+  height: auto;
+  border: 3px solid black;
+  border-radius: 8px; 
+}
+
+.top-promo-banner {
+  background-color: #d32f2f;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 1; /* Indice bas */
+  position: relative; /* Position normale dans le flux */
+}
+
+.Telephone {
+  font-family: 'Work Sans', sans-serif;
+  font-size: clamp(16px, 4vw, 20px); /* s’adapte à l’écran */
+  font-weight: 600;
+  color: #000;
+  text-decoration: none;              /* pas de soulignement */
+  padding: 10px 14px;
+  border: 2px solid #000;             /* cadre noir */
+  border-radius: 8px;                 /* coins arrondis */
+  display: inline-block;
+}
+
+
+
+@media (max-width: 480px) {
+  .Telephone {
+    font-size: 18px;                  /* taille fixe sur petit écran */
+    padding: 8px 10px;                /* réduit le padding */
+    width: 100%;                      /* prend toute la largeur */
+    text-align: center;               /* centré */
+  }
+}
+
+/* --- HEADER PRINCIPAL --- */
+.header {
+  background: var(--color-bg-alt);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+}
+
+/* --- NAVIGATION (DESKTOP) --- */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav a,
+.nav button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.nav a:hover,
+.nav button:hover {
+  color: var(--color-accent);
+}
+
+.cart-link {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -12px;
+  background: var(--color-accent);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s infinite;
+}
+
+.btn-register {
+  background: var(--color-accent);
+  color: white;
+  padding: 0.625rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.btn-register:hover {
+  background: var(--color-secondary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-register::after {
+  display: none;
+}
+
+.logout-btn {
+  background: transparent;
+  color: var(--color-text);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.logout-btn:hover {
+  color: var(--color-error);
+}
+
+.mobile-menu-btn {
+  display: none; /* Caché sur Desktop */
+  background: transparent;
+  color: var(--color-primary);
+  padding: 0.5rem;
+  border: none;
+}
+
+/* --- MEGA MENU (HEADER DESKTOP) --- */
+.nav-dropdown-wrapper {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  align-items: center;
+  display: flex; 
+}
+
+.nav-link-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.mega-menu-list {
+  display: none; /* Caché par défaut */
+  position: absolute;
+  top: 100%; 
+  left: 50%; /* MODIFICATION ICI : Centrage horizontal */
+  transform: translateX(-50%); /* MODIFICATION ICI : Ajustement pour centrer parfaitement */
+  width: 750px; /* LARGEUR AGRANDIE */
+  max-width: 90vw; /* S'adapte si l'écran est trop petit */
+  max-height: 1000px; /* Hauteur maximale */
+  overflow-y:auto;
+  background-color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border-radius: 0 0 8px 8px;
+  padding: 30px; 
+  z-index: 2000; /* Au-dessus de tout */
+  border-top: 3px solid #d32f2f; 
+}
+
+
+.nav-dropdown-wrapper:hover .mega-menu-list {
+  display: block;
+}
+
+/* Grille en 3 colonnes */
+.mega-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 35px; /* Espacement entre les colonnes */
+}
+
+.menu-row {
+  border-bottom: none;
+  padding: 0;
+}
+
+.menu-category-title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #000000;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+}
+
+.menu-products-list {
+  display: flex;
+  flex-direction: column; /* Liste verticale dans la colonne */
+  gap: 8px;
+}
+
+.menu-product-link {
+  color: #666666; 
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.menu-product-link:hover {
+  color: #d32f2f; 
+  padding-left: 5px; 
+}
+
+/* --- FOND GRIS MOBILE (BACKDROP) --- */
+.mobile-menu-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Gris noir semi-transparent */
+  z-index: 999; /* Derrière le menu mais devant le contenu */
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* --- RESPONSIVE / MOBILE --- */
+/* --- RESPONSIVE / MOBILE --- */
+@media (max-width: 968px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;            /* --- MODIFICATION ICI : Ancrage à gauche --- */
+    right: auto;        /* (Pour désactiver l'ancrage droit) */
+    bottom: 0;
+    width: 75%;
+    background: var(--color-bg-alt);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 5rem 2rem 2rem;
+    box-shadow: var(--shadow-lg);
+      /* --- IMPORTANT : AJOUTER CECI POUR LE SCROLL --- */
+    overflow-y: auto; /* Active le scroll vertical */
+    -webkit-overflow-scrolling: touch; /* Scroll fluide sur iOS */
+    /* ---------------------------------------------- */
+    transform: translateX(-100%); /* --- MODIFICATION ICI : Caché à gauche --- */
+    transition: transform 0.3s ease;
+    z-index: 1001; 
+  }
+
+  .nav-open {
+    transform: translateX(0); /* --- MODIFICATION ICI : Revient à sa place (gauche) --- */
+  }
+
+  .nav a,
+  .nav button {
+    width: 100%;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav a::after {
+    display: none;
+  }
+
+  /* Cacher le Mega Menu et la flèche sur Mobile */
+  .mega-menu-list {
+    display: none !important;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .nav-dropdown-wrapper {
+    display: block;
+    height: auto;
+  }
+}
+
+/* Par défaut : caché */
+.mobile-logout-btn {
+  display: none;
+  color: blue;
+}
+
+/* button deconexion dans resolution <480px */
+@media (max-width: 480px) {
+  .mobile-logout-btn {
+    display: flex;              /* ou block selon ton design */
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background-color: #dc3545;  /* rouge déconnexion */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .mobile-logout-btn:hover {
+    background-color: #b02a37;  /* effet hover */
+  }
+}
+
+@import "./Header-additions.css";
+
+/* Empêche le dépassement horizontal global */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Forcer le header à rester contenu */
+.header-container {
+  flex-wrap: wrap;       /* permet de passer à la ligne si trop large */
+  padding: 1rem;         /* réduit le padding */
+}
+
+.logo-img {
+  max-width: 80px;       /* réduit le logo sur mobile */
+  height: auto;
+}
+
+@media (max-width: 480px) {
+  .Telephone {
+    display: block;
+    width: 100%;          /* prend toute la largeur */
+    text-align: center;   /* centré */
+    margin: 0 auto;       /* évite le débordement */
+  }
+}

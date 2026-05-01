@@ -1,0 +1,821 @@
+/* =========================================
+   HEADER & NAV STYLES (Responsive Optimisé)
+   ========================================= */
+.header {
+  background: var(--color-bg-alt, #fff);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--color-border, #eee);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(0.5rem, 2vw, 1rem) clamp(1rem, 4vw, 2rem);
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --- Logo --- */
+.logo-img {
+  max-width: clamp(80px, 10vw, 110px);
+  height: auto;
+  border: 3px solid #000;
+  border-radius: 8px;
+  display: block;
+}
+
+/* --- Téléphone --- */
+.Telephone {
+  font-family: 'Work Sans', sans-serif;
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 500;
+  color: #141313;
+  text-decoration: none;
+  padding: clamp(4px, 1vw, 6px) clamp(8px, 2vw, 12px);
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  background-color: beige;
+}
+
+.Telephone:hover {
+  border-color: var(--color-accent, #d4a373);
+  color: var(--color-accent, #d4a373);
+}
+@media (max-width: 480px) {
+  .Telephone { 
+    /* display: none;  <-- Supprimez ceci */
+    font-size: 0.8rem; /* Réduit la taille du texte */
+    padding: 4px 8px;  /* Réduit les marges internes */
+  }
+}
+
+/* Navigation Links */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.nav a,
+.nav button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-weight: 500;
+  color: var(--color-text, #333);
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav a:hover { color: var(--color-accent, #d4a373); }
+
+/* =========================================
+   HERO SIDEBAR Responsive
+   ========================================= */
+.hero-sidebar {
+  background: rgba(255, 255, 255, 0.85);
+  margin-left: 0;
+  border: 3px solid beige;
+  border-radius: 12px;
+  padding: clamp(12px, 2vw, 16px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-width: clamp(220px, 25%, 300px);
+
+  display: None;
+}
+
+.sidebar-title {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  margin-bottom: 2rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* =========================================
+   HERO CONTENT Responsive
+   ========================================= */
+/* --- HERO CONTENT --- */
+.hero-content {
+  display: grid;
+  /* MODIFICATION ICI : On enlève la colonne de gauche (300px) */
+  grid-template-columns: 1fr 1fr; 
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+.hero-description {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.hero-image img {
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 100%;
+  height: clamp(220px, 40vw, 400px);
+  object-fit: cover;
+}
+
+/* =========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================= */
+@media (max-width: 1024px) {
+  .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-sidebar { display: none; }
+  .hero-sidebar.mobile-visible {
+    display: block;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+    animation: slideDown 0.3s ease-out;
+  }
+  .hero-title { font-size: clamp(2rem, 6vw, 2.5rem); }
+}
+
+@media (max-width: 640px) {
+  .hero-title { font-size: clamp(1.5rem, 5vw, 2rem); }
+  .hero-description { font-size: 1rem; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-image img { height: clamp(200px, 40vw, 250px); }
+}
+/* =========================================
+   1. STYLES DU BOUTON CHAT FLOTTANT
+   ========================================= */
+.floating-contact {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.chat-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-accent, #d4a373);
+  border: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.chat-button:hover { transform: scale(1.1); }
+.chat-button.active { background-color: #e74c3c; }
+
+.contact-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.contact-options.show { opacity: 1; transform: translateY(0); pointer-events: all; }
+
+.contact-item {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.contact-item:hover { transform: scale(1.1); }
+.contact-item[href*="facebook"] { background-color: #1877F2; }
+.contact-item[href*="instagram"] { background: #d6249f; background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.contact-item[href*="tel"] { background-color: #3498db; }
+
+/* =========================================
+   2. STYLES GLOBAUX ET CONTAINER
+   ========================================= */
+.home { min-height: 100vh; }
+
+/* Conteneur principal */
+.container {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 0 1.5rem;
+}
+
+.hero {
+  background: linear-gradient(135deg, #fafaf8 0%, #f5f3ef 100%);
+  
+  /* --- MODIFICATION : Hauteur Pleine Page --- */
+  min-height: 100vh;
+  display: flex;
+  align-items: center; /* Centre verticalement le contenu */
+  
+  padding: 4rem 0; /* Espace pour le header */
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .container { max-width: 1400px; height: 100%; }
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(212, 165, 116, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* =========================================
+   3. HERO SECTION (Layout 2 Colonnes + Sidebar)
+   ========================================= */
+
+/* --- HERO CONTENT (Grid) --- */
+.hero-content {
+  display: grid;
+  /* --- MODIFICATION : Strictement 2 Colonnes --- */
+  grid-template-columns: 1fr 1fr; 
+  gap: 3rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* --- BOUTON MOBILE "NOS CATALOGUE" --- */
+.mobile-univers-header { display: none; width: 100%; margin-bottom: 1rem; }
+.mobile-univers-btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.mobile-univers-btn:hover { background-color: #f9f9f9; }
+
+/* --- SIDEBAR (Catalogues) --- */
+/* Masquée par défaut sur Desktop */
+.hero-sidebar {
+  background: rgba(255, 255, 255, 0.85);
+  margin-left: 0;
+  border: 3px solid beige;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-width: 300px;
+  display: none; /* --- CACHÉ PAR DÉFAUT --- */
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.sidebar-list { list-style: none; padding: 0; margin: 0; }
+.sidebar-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: var(--color-primary, #2c2c2c);
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 0.5rem 0;
+}
+.sidebar-link:hover { color: var(--color-accent, #d4a373); }
+.dropdown-toggle {
+  font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-accent, #d4a373);
+}
+.sidebar-sublist {
+  list-style: none;
+  padding-left: 25px;
+  margin-top: 5px;
+  border-left: 2px solid #eee;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease;
+  opacity: 0;
+}
+.sidebar-sublist.open { max-height: 500px; opacity: 1; margin-bottom: 1rem; }
+.sidebar-sublist li { margin-bottom: 5px; }
+.sidebar-product-link {
+  display: block;
+  text-decoration: none;
+  color: #555;
+  font-size: 1rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+.sidebar-product-link:hover {
+  color: var(--color-accent, #d4a373);
+  background-color: rgba(212, 163, 115, 0.1);
+  padding-left: 15px;
+}
+
+/* --- TEXTE (GAUCHE) --- */
+.hero-text { 
+  z-index: 1; 
+  padding-right: 1rem;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 800;
+}
+.hero-accent { color: var(--color-accent); font-style: italic; }
+.hero-description {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+  max-width: 600px;
+}
+.hero-actions { 
+  display: flex; 
+  gap: 1rem; 
+  flex-wrap: wrap; 
+}
+
+/* --- IMAGE (DROITE - Hauteur Pleine) --- */
+.hero-image { 
+  position: relative; 
+  z-index: 1; 
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.hero-image img {
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+  width: 100%;
+  
+  /* --- MODIFICATION : Image Haute (85% de la hauteur écran) --- */
+  height: 85vh; 
+  
+  object-fit: cover;
+}
+
+.hero-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px; /* Positionné à DROITE */
+  background: var(--color-accent);
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-md);
+  z-index: 2;
+}
+
+/* =========================================
+   4. SECTIONS COMMUNES
+   ========================================= */
+.categories-section, .featured-section { padding: 4rem 0; }
+.features-section {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f5f3ef 0%, #fafaf8 100%);
+}
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+.section-header p {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+}
+
+/* =========================================
+   5. CATEGORIES & PRODUCTS GRIDS
+   ========================================= */
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  height: 280px;
+  cursor: pointer;
+}
+.category-image { width: 100%; height: 100%; position: relative; }
+.category-image img {
+  width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
+}
+.category-card:hover .category-image img { transform: scale(1.1); }
+.category-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: 1.5rem;
+  display: flex; align-items: flex-end;
+}
+.category-name { font-size: 1.5rem; font-weight: 600; color: white; }
+
+.product-card {
+  cursor: pointer;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover { transform: translateY(-5px); }
+.product-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px 12px 0 0;
+  height: 260px;
+  flex-shrink: 0;
+}
+.product-image img {
+  width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;
+}
+.product-card:hover .product-image img { transform: scale(1.08); }
+.product-badge {
+  position: absolute; top: 10px; left: 10px;
+  background: var(--color-accent); color: white;
+  padding: 4px 10px; border-radius: 20px;
+  font-size: 0.75rem; font-weight: 600;
+}
+.product-info { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+.product-category {
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.product-name { font-size: 1.1rem; margin-bottom: 1rem; color: var(--color-primary); }
+.product-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-price { font-size: 1.25rem; font-weight: 700; color: var(--color-secondary); }
+.product-stock { font-size: 0.8rem; color: var(--color-success); font-weight: 600; }
+.section-footer { text-align: center; margin-top: 2rem; }
+
+/* =========================================
+   6. FEATURES GRID
+   ========================================= */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2rem;
+}
+.feature-card {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease;
+}
+.feature-card:hover { transform: translateY(-5px); }
+.feature-icon { font-size: 3rem; margin-bottom: 1rem; display: inline-block; }
+.feature-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--color-primary); }
+.feature-card p { color: var(--color-text-light); line-height: 1.6; font-size: 0.95rem; }
+
+/* =========================================
+   7. RESPONSIVE BREAKPOINTS
+   ========================================= */
+@media (max-width: 1024px) {
+  .hero { padding: 2rem 0; min-height: auto; } /* Sur mobile, on laisse le contenu pousser */
+  
+  .hero-content { 
+    grid-template-columns: 1fr; 
+    gap: 2rem; 
+  }
+  
+  /* Afficher les contrôles mobiles */
+  .mobile-univers-header { display: block; }
+  
+  /* Sidebar cachée par défaut, visible si .mobile-visible */
+  .hero-sidebar { display: none; }
+  .hero-sidebar.mobile-visible {
+    display: block;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  .hero-title { font-size: 2.5rem; }
+  .hero-image img { height: 350px; }
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 1rem; }
+  .hero { padding: 1rem 0; }
+  .hero-title { font-size: 2rem; }
+  .hero-description { font-size: 1rem; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-image img { height: 250px; }
+  
+  .categories-section, .featured-section, .features-section { padding: 3rem 0; }
+  .categories-grid, .products-grid, .features-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .category-card { height: 220px; }
+  .product-image { height: 220px; }
+  .category-name { font-size: 1.2rem; }
+  .section-header { margin-bottom: 2rem; }
+  .section-header h2 { font-size: 1.8rem; }
+  .section-header p { font-size: 1rem; }
+}
+
+/* Animations */
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+/* =========================================
+   8. SECTION TOP PRODUITS (Design Liste Élégante)
+   ========================================= */
+.top-products-section {
+  background-color: #ffffff;
+  padding: 4rem 0;
+  border-top: 1px solid #eee;
+}
+
+.top-list-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.top-list-elegant {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.top-item-elegant {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.top-item-elegant:last-child {
+  border-bottom: none;
+}
+
+.top-item-elegant:hover {
+  background-color: rgba(212, 163, 115, 0.05);
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 4px;
+}
+
+.top-rank-elegant {
+  font-family: var(--font-display, serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ddd;
+  width: 50px;
+  text-align: center;
+  margin-right: 1.5rem;
+  font-style: italic;
+}
+
+.top-item-elegant:nth-child(1) .top-rank-elegant { color: #FFD700; }
+.top-item-elegant:nth-child(2) .top-rank-elegant { color: #C0C0C0; }
+.top-item-elegant:nth-child(3) .top-rank-elegant { color: #CD7F32; }
+
+.top-link-elegant {
+  flex-grow: 1;
+  font-size: 1.1rem;
+  color: var(--color-primary, #2c2c2c);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.top-link-elegant:hover {
+  color: var(--color-accent, #d4a373);
+  text-decoration: underline;
+}
+
+.top-count-elegant {
+  font-size: 0.9rem;
+  color: #888;
+  font-weight: 400;
+  background: #f4f4f4;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* =========================================
+   9. FOOTER (Design Dark & Élégant)
+   ========================================= */
+.main-footer {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  padding: 5rem 0 2rem 0;
+  margin-top: 0;
+  border-top: 5px solid var(--color-accent, #d4a373);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3rem;
+  margin-bottom: 4rem;
+}
+
+.footer-col h4 {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: var(--color-accent, #d4a373);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 1rem;
+}
+
+.footer-col a {
+  color: #bbbbbb;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: block;
+  position: relative;
+}
+
+.footer-col a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent, #d4a373);
+  transition: width 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: #ffffff;
+  padding-left: 5px;
+}
+
+.footer-col a:hover::before {
+  width: 100%;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding-top: 2rem;
+  text-align: center;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+/* Responsive Footer */
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-col {
+    border-bottom: 1px solid #333;
+    padding-bottom: 2rem;
+  }
+  .footer-col:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Responsive Top Produits */
+@media (max-width: 600px) {
+  .top-rank-elegant {
+    font-size: 1.4rem;
+    width: 35px;
+  }
+  .top-link-elegant {
+    font-size: 1rem;
+  }
+  .top-count-elegant {
+    display: none;
+  }
+}
+
+/* =========================================
+   10. BADGE TELEPHONE FLOTTANT
+   ========================================= */
+.phone-float-badge {
+  position: fixed; /* Fixe sur toute la page */
+  bottom: 200px;    /* Juste au-dessus du bouton chat (qui est à 30px + 60px) */
+  right: 30px;
+  background-color: #27ae60; /* Vert téléphone */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  z-index: 3000; /* Au-dessus de tout */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Animation d'apparition */
+  animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Animation de rebond */
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}

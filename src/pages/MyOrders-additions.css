@@ -1,0 +1,321 @@
+/* ═══════════════════════════════════════════
+   MES COMMANDES — STYLES ADDITIONNELS
+   ═══════════════════════════════════════════ */
+
+/* ── Modal de confirmation ──────────────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-box {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+.modal-box p {
+  margin: 1rem 0 1.5rem;
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.btn-danger {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-danger:hover { background: #c0392b; }
+
+/* ── Progression statut ──────────────────────────────────────────────────────── */
+.order-status-section {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #f5f0ea;
+  overflow-x: auto;
+}
+
+.status-progress {
+  display: flex;
+  align-items: center;
+  min-width: 380px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.step.done, .step.active { opacity: 1; }
+
+.step-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #e0d5c8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #888;
+  transition: all 0.3s;
+}
+
+.step.done .step-dot {
+  background: #27ae60;
+  color: #fff;
+}
+
+.step.active .step-dot {
+  background: #8B5E3C;
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(139,94,60,0.2);
+}
+
+.step-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #999;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.step.done .step-label,
+.step.active .step-label { color: #444; }
+
+.step-line {
+  flex: 1;
+  height: 3px;
+  background: #e0d5c8;
+  margin: 0 4px;
+  margin-bottom: 20px;
+  border-radius: 2px;
+  transition: background 0.3s;
+}
+.step-line.done { background: #27ae60; }
+
+/* ── Statut annulée ──────────────────────────────────────────────────────────── */
+.status-cancelled {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: #fde8e8;
+  color: #c0392b;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+/* ── En-tête de la commande ──────────────────────────────────────────────────── */
+.order-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #f5f0ea;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.order-info { display: flex; flex-direction: column; gap: 0.2rem; }
+.order-number { font-size: 1rem; font-weight: 700; color: #2c1810; }
+.order-date { font-size: 0.82rem; color: #999; }
+
+.order-total-badge {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #8B5E3C;
+  background: #fdf5ee;
+  padding: 0.35rem 0.9rem;
+  border-radius: 10px;
+}
+
+/* ── Corps ──────────────────────────────────────────────────────────────────── */
+.order-body {
+  padding: 1.25rem 1.5rem;
+}
+
+.order-delivery-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.contact-note {
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 1rem;
+}
+
+/* ── Boutons action ──────────────────────────────────────────────────────────── */
+.action-buttons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.btn-icon.edit {
+  background: #eaf4fd;
+  color: #2471a3;
+  border: 1px solid #aed6f1;
+}
+.btn-icon.edit:hover { background: #d6eaf8; }
+
+.btn-icon.cancel {
+  background: #fdedec;
+  color: #c0392b;
+  border: 1px solid #fadbd8;
+}
+.btn-icon.cancel:hover { background: #f5b7b1; }
+
+.btn-icon:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ── Formulaire édition ──────────────────────────────────────────────────────── */
+.edit-order-form h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2c1810;
+  margin-bottom: 1rem;
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+
+.edit-order-form .form-group { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 0.75rem; }
+.edit-order-form label { font-size: 0.8rem; font-weight: 700; color: #777; text-transform: uppercase; letter-spacing: 0.04em; }
+.edit-order-form input, .edit-order-form textarea {
+  padding: 0.6rem 0.8rem;
+  border: 1.5px solid #e0d5c8;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background: #fdfaf7;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.edit-order-form input:focus, .edit-order-form textarea:focus {
+  outline: none;
+  border-color: #8B5E3C;
+}
+
+.form-actions { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+
+.btn-save {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1.2rem;
+  background: #27ae60; color: #fff;
+  border: none; border-radius: 8px; font-weight: 600;
+  cursor: pointer; transition: background 0.2s;
+}
+.btn-save:hover { background: #219a52; }
+.btn-save:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-cancel-edit {
+  display: flex; align-items: center; gap: 0.4rem;
+  padding: 0.55rem 1.2rem;
+  background: #f5f0ea; color: #666;
+  border: 1.5px solid #e0d5c8; border-radius: 8px; font-weight: 600;
+  cursor: pointer; transition: all 0.2s;
+}
+.btn-cancel-edit:hover { background: #e8ddd0; }
+
+/* ── Loading / empty ─────────────────────────────────────────────────────────── */
+.orders-loading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  padding: 4rem;
+  color: #888;
+  font-size: 1rem;
+}
+
+.empty-orders {
+  text-align: center;
+  padding: 5rem 1rem;
+  color: #aaa;
+}
+.empty-orders h2 { font-size: 1.4rem; color: #555; margin: 1rem 0 0.5rem; }
+.empty-orders p { color: #888; margin-bottom: 1.5rem; }
+
+/* ── Container général ───────────────────────────────────────────────────────── */
+.my-orders-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem 1rem 4rem;
+}
+
+.orders-list { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.order-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  overflow: hidden;
+  border: 1px solid #f0e8e0;
+}
+
+/* ── Bannière panier visiteur ────────────────────────────────────────────────── */
+.guest-cart-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: #fff8e8;
+  border: 1px solid #f5d98a;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  color: #7a5500;
+  margin-bottom: 1.5rem;
+}
+.guest-cart-banner a { color: #8B5E3C; font-weight: 700; text-decoration: underline; }
