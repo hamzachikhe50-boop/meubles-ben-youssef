@@ -242,8 +242,8 @@ const Home = () => {
           <div className="features-grid">
             <div className="feature-card fade-in">
               <div className="feature-icon">🚚</div>
-              <h3>Livraison Gratuite</h3>
-              <p>Pour toute commande supérieure à 500€</p>
+              <h3>Livraison </h3>
+              <p>Dans tout la Tunisie</p>
             </div>
             <div className="feature-card fade-in">
               <div className="feature-icon">⭐</div>
