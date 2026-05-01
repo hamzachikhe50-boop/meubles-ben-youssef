@@ -1,33 +1,41 @@
 import axios from 'axios';
 
-const API_URL ='https://backend-meubles-ben-youssef.onrender.com/api';
+const API_URL = 'https://backend-meubles-ben-youssef.onrender.com/api';
 
 const api = axios.create({
   baseURL: API_URL,
-  // Axios gère automatiquement le Content-Type selon le payload (JSON ou FormData)
 });
 
-// ── Intercepteur requête : inject JWT ─────────────────────────────────────────
+// ── Intercepteur requête : inject JWT de manière sécurisée ───────────────────
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+    } catch (e) {
+      // Si le navigateur bloque le localStorage (ex: Safari privé)
+      console.warn("LocalStorage inaccessible");
     }
     return config;
   },
   (error) => Promise.reject(error)
 );
 
-// ── Intercepteur réponse : gère les 401 ──────────────────────────────────────
+// ── Intercepteur réponse : gère les 401 (Token expiré) ──────────────────────
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      // Redirection seulement si l'utilisateur n'est pas déjà sur /login
-      if (window.location.pathname !== '/login') {
+      try {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+      } catch (e) {}
+      
+      // Ne pas rediriger si on est déjà sur la page de login/register
+      const publicPages = ['/login', '/register'];
+      if (!publicPages.includes(window.location.pathname)) {
         window.location.href = '/login';
       }
     }
@@ -63,9 +71,6 @@ export const categoriesAPI = {
 //  PRODUITS
 // ════════════════════════════════════════════════════════
 export const productsAPI = {
-  /**
-   * params: { search, category_id, min_price, max_price, in_stock, page, limit, sort }
-   */
   getAll: (params) => api.get('/products', { params }),
   getById: (id) => api.get(`/products/${id}`),
   create: (data) => api.post('/admin/products', data),
