@@ -19,9 +19,19 @@
   gap: 40px;
 }
 
+/* ==========================================
+   TABLETTES (Moins de 992px)
+   ========================================== */
 @media (max-width: 992px) {
   .cart-content {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Passe le résumé/commande en dessous des produits */
+  }
+  
+  /* Désactive le "sticky" sur mobile, car quand tout est en colonne, 
+     si le formulaire reste collé en haut, ça gâche l'expérience */
+  .summary-card, .order-form-card {
+    position: relative;
+    top: auto;
   }
 }
 
@@ -116,7 +126,105 @@
   transform: scale(1.1);
 }
 
-/* Summary Card */
+/* ==========================================
+   PETITS TELEPHONES (Moins de 768px)
+   ========================================== */
+@media (max-width: 768px) {
+  /* On casse la grille stricte et on passe en flexbox pour que ça s'adapte */
+  .cart-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+  }
+
+  .item-image {
+    width: 80px;
+    flex-shrink: 0; /* Empêche l'image de rétrécir */
+  }
+
+  .item-image img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .item-details {
+    flex: 1; /* Prend l'espace restant à côté de l'image */
+    min-width: 150px; /* Force le texte à aller à la ligne si trop court */
+  }
+
+  .item-details h3 {
+    font-size: 1rem;
+  }
+
+  /* Le prix passe en dessous du titre */
+  .item-price {
+    width: 100%;
+    order: 5; /* Le place après les boutons quantités/totaux */
+    margin-top: -5px;
+    font-size: 0.95rem;
+  }
+
+  /* La quantité et le total se placent à droite en dessous */
+  .item-quantity {
+    order: 3;
+    padding: 5px 10px;
+    gap: 10px;
+  }
+
+  .item-total {
+    order: 4;
+    flex: 1;
+    text-align: right;
+    min-width: auto;
+    font-size: 1rem;
+  }
+
+  .remove-btn {
+    order: 6; /* Poubelle tout à la fin à gauche */
+  }
+}
+
+/* ==========================================
+   TRES PETITS TELEPHONES (Moins de 480px)
+   ========================================== */
+@media (max-width: 480px) {
+  .cart-container {
+    padding: 20px 15px; /* Moins de marge sur les bords */
+  }
+
+  .page-title {
+    font-size: 1.8rem; /* Titre plus petit */
+    margin-bottom: 25px;
+  }
+
+  .cart-items-section {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .summary-card, .order-form-card {
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .summary-card h2, .order-form-card h2 {
+    font-size: 1.4rem;
+  }
+
+  /* Les champs prénom/nom se mettent l'un sous l'autre */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0; /* Pas besoin de gap supplémentaire, le form-group s'en charge */
+  }
+
+  .item-total {
+    font-size: 0.95rem;
+  }
+}
+
+/* Summary Card & Order Form */
 .summary-card, .order-form-card {
   background: #fff;
   border-radius: 12px;
@@ -169,6 +277,7 @@
   border-radius: 8px;
   font-family: inherit;
   transition: border-color 0.3s;
+  box-sizing: border-box; /* Sécurité pour ne pas déborder */
 }
 
 .form-group input:focus, .form-group textarea:focus {
@@ -202,7 +311,7 @@
 
 .success-card {
   background: #fff;
-  padding: 60px;
+  padding: 60px 30px; /* Ajout de padding horizontal pour les petits écrans */
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   max-width: 600px;
@@ -250,6 +359,7 @@
   transition: all 0.3s;
   text-decoration: none;
   border: none;
+  box-sizing: border-box;
 }
 
 .btn-primary {
