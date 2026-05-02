@@ -204,7 +204,7 @@ const AdminProducts = () => {
                 </td>
                 <td>{product.name}</td>
                 <td>{product.category_name || 'ID: ' + product.category_id}</td>
-                <td>{product.price} €</td>
+                <td>{product.price} TND </td>
                 <td>
                   <button onClick={() => handleOpenModal(product)} className="btn-icon"><Edit size={18}/></button>
                   <button onClick={() => handleDelete(product.id)} className="btn-icon btn-delete"><Trash2 size={18}/></button>

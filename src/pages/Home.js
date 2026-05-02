@@ -219,7 +219,7 @@ const Home = () => {
                   <span className="product-category">{product.category_name}</span>
                   <h3 className="product-name">{product.name}</h3>
                   <div className="product-footer">
-                    <span className="product-price">{Number(product.price).toFixed(2)} €</span>
+                    <span className="product-price">{Number(product.price).toFixed(2)} TND</span>
                     <span className="product-stock">
                       {product.stock_quantity > 0 ? 'En stock' : 'Rupture'}
                     </span>
