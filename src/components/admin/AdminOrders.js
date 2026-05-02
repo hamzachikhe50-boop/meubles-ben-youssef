@@ -96,7 +96,7 @@ const AdminOrders = () => {
                 <td>#{order.id}</td>
                 <td>{order.first_name} {order.last_name}</td>
                 <td>{new Date(order.created_at).toLocaleDateString()}</td>
-                <td>{order.total_amount.toLocaleString()} €</td>
+                <td>{order.total_amount.toLocaleString()} TND</td>
                 <td>{getStatusBadge(order.status)}</td>
                 <td className="actions-cell">
                   <button 
